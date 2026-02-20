@@ -151,18 +151,19 @@ getgenv().setfpscap = function(cap)
 	fpscap = cap
 end
 local clock = tick()
-RunService.RenderStepped:Connect(function()
-	while clock + 1 / fpscap > tick() do end
-	clock = tick()
+if RunService:IsClient() then
+	RunService.RenderStepped:Connect(function()
+		while clock + 1 / fpscap > tick() do end
+		clock = tick()
 
-	task.wait()
-end)
+		task.wait()
+	end)
+end;
 
 getgenv().getfpscap = function()
 	return fpscap
 end
 
 print("meow :3")
-
 
 print(getfpscap())
