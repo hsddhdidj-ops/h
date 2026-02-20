@@ -152,12 +152,12 @@ getgenv().setfpscap = function(cap)
 end
 local clock = tick()
 if RunService:IsClient() then
-	RunService.RenderStepped:Connect(function()
+--[[	RunService.RenderStepped:Connect(function()
 		while clock + 1 / fpscap > tick() do end
 		clock = tick()
 
 		task.wait()
-	end)
+	end)]]
 end;
 
 getgenv().getfpscap = function()
